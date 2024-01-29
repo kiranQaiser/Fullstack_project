@@ -35,21 +35,21 @@ const Footer = () => {
       <div className="footer-section">
           <h2>LET US HELP YOU</h2>
           <ul className="footer-links">
-            <li><a href="/">Shipping Policy</a></li>
-            <li><a href="/">Return and Exchange</a></li>
-            <li><a href="/">Refund Policy</a></li>
-            <li><a href="/">Privacy Policy</a></li>
-            <li><a href="/">Terms of Service</a></li>
-            <li><a href="/">FAQ</a></li>
+            <li><a href="/shipping-policy">Shipping Policy</a></li>
+            <li><a href="/ReturnAndExchange">Return and Exchange</a></li>
+            <li><a href="/RefundPolicy">Refund Policy</a></li>
+            <li><a href="/PrivacyPolicy">Privacy Policy</a></li>
+            <li><a href="/TermsOfService">Terms of Service</a></li>
+            <li><a href="/FAQ">FAQ</a></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h2>GET TO KNOW US</h2>
           <ul className="footer-links">
-            <li><a href="/">About Us</a></li>
-            <li><a href="/">Contact us</a></li>
-            <li><a href="/">Our Outlets</a></li>
+            <li><a href="/AboutUs">About Us</a></li>
+            <li><a href="/ContactUs">Contact us</a></li>
+            <li><a href="/OurOutlets">Our Outlets</a></li>
           </ul>
         </div>
 

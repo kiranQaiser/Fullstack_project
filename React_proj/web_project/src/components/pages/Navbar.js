@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaSearch, FaShoppingCart, FaHeart,FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import './Page.css';
 
 const Navbar = () => {
   return (
