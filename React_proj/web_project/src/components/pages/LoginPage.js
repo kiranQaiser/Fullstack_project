@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Page.css';
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
 
