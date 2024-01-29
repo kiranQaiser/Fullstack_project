@@ -1,0 +1,49 @@
+/* src/styles/MainSection.css */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  section {
+    text-align: center;
+    margin: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  section span {
+    font-size: 2em;
+    display: inline-block;
+    margin: 0 10px;
+    animation: scrollText 2s infinite;
+  }
+  
+  @keyframes scrollText {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  section a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  section img {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  section p {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

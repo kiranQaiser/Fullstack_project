@@ -1,0 +1,172 @@
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+
+/* src/styles/App.css */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-social a {
+  color: #fff;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.footer-social2 a {
+  color: #fff;
+  margin-right: 10px;
+  font-size: 40px;
+}
+
+
+
+.footer-subscribe input {
+  padding: 8px;
+  margin-right: 8px;
+  width: 150px;
+}
+
+.footer-subscribe button {
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-payment {
+  display: flex;
+  align-items: center;
+}
+
+.footer-payment p {
+  margin-left: 10px;
+}
+
+.footer-payment-methods {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-icon {
+  font-size: 2rem;
+  margin: 0 10px; 
+}
+
+.footer-social2{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+/* src/styles/HomeContent.css */
+.image-space {
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
+.image-link {
+  display: inline-block;
+}
+
+.image-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.image-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  font-size: 30px;
+}
+/* src/styles/HomeContent.css */
+.content-container {
+  background-color: #f4f4f4; /* Change the background color as needed */
+  padding: 20px;
+  margin-top: 20px; /* Add margin to separate content from images */
+}
+
+.content-container h2 {
+  color: #333;
+}
+
+
