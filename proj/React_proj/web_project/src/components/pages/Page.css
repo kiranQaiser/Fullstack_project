@@ -1,0 +1,112 @@
+/* src/components/pages/WomenPage.css */
+.women-page {
+  padding: 20px;
+}
+
+.women-banner {
+  /* Add styles for your banner */
+  margin-bottom: 20px;
+}
+
+.women-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-details {
+  margin-top: 10px;
+}
+
+/* Add more styles based on your design */
+/* Add or update your existing CSS with the following styles */
+
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f8f8; /* Set your desired background color */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  text-decoration: none;
+  color: #333; /* Set your desired text color */
+}
+
+.logo img {
+  width: 100px; /* Adjust the width as needed */
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Set your desired text color */
+  margin: 5px 0;
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+.clothing-shop-link {
+  font-size: 18px; /* Adjust the font size as needed */
+  
+}
+
+.search-cart {
+  display: flex;
+  align-items: center;
+}
+
+.search-cart a {
+  margin-left: 20px; /* Adjust the margin as needed */
+  text-decoration: none;
+  color: #333; /* Set your desired text color */
+}
+
+.search-cart svg {
+  margin-right: 55px; /* Adjust the margin as needed */
+}
+
+/* Add more styles as needed */
+/* Add or update your existing CSS with the following styles */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Set your desired text color */
+  margin: 0 20px; /* Adjust the margin as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+.clothing-shop-link {
+  font-size: 40px; /* Adjust the font size as needed */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+
