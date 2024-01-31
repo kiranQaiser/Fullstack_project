@@ -1,120 +1,135 @@
 import React, { useState } from 'react';
-import './Page.css';
+import './Login.css';
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [userInfo, setUserInfo] = useState(null);
+  const [error, setError] = useState(null);
+  const [token, setToken] = useState('');
 
   const toggleForm = () => {
     setShowLogin((prev) => !prev);
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    setError(null);
   };
 
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '14px',
-    padding: '24px',
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let apiUrl = 'http://localhost:8000/api/login/';
+      let bodyData = {
+        username: username,
+        password: password,
+      };
+
+      if (!showLogin) {
+        apiUrl = 'http://localhost:8000/api/register/';
+        bodyData = {
+          username: username,
+          password: password,
+          email: email,
+        };
+      }
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bodyData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setToken(data.token);
+
+        const userInfoResponse = await fetch('http://localhost:8000/api/user-info/', {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        });
+
+        if (userInfoResponse.ok) {
+          const userInfo = await userInfoResponse.json();
+          setUserInfo(userInfo);
+        } else {
+          setError('Failed to fetch user information');
+        }
+      } else {
+        setError('Invalid credentials or registration failed');
+      }
+    } catch (error) {
+      setError('An error occurred during the authentication process');
+    }
   };
 
   return (
-    <div className="container" style={containerStyle}>
-      <div className="main" style={mainStyle}>
-        <input type="checkbox" id="chk" aria-hidden="true" style={checkboxStyle} />
+    <div className="container">
+      <div className="main">
+        <input type="checkbox" id="chk" aria-hidden="true" />
 
-        <div className={showLogin ? "login" : "register"} style={formContainerStyle}>
-          <form className="form" style={formStyle}>
-            <label htmlFor="chk" aria-hidden="true" style={labelStyle}>{showLogin ? "Log in" : "Register"}</label>
-            {showLogin ? (
-              <>
-                <input className="input" type="email" name="email" placeholder="Email" required style={inputStyle} />
-                <input className="input" type="password" name="pswd" placeholder="Password" required style={inputStyle} />
-              </>
-            ) : (
-              <>
-                <input className="input" type="text" name="txt" placeholder="Username" required style={inputStyle} />
-                <input className="input" type="email" name="email" placeholder="Email" required style={inputStyle} />
-                <input className="input" type="password" name="pswd" placeholder="Password" required style={inputStyle} />
-              </>
+        <div className={showLogin ? "login" : "register"}>
+          <form className="form" onSubmit={handleSubmit}>
+            <label htmlFor="chk" aria-hidden="true">{showLogin ? "Log in" : "Register"}</label>
+
+            <input
+              className="input"
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              className="input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            {!showLogin && (
+              <input
+                className="input"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             )}
-            <button style={buttonStyle}>Submit</button>
+
+            <button type="submit">Submit</button>
           </form>
         </div>
 
-        <button onClick={toggleForm} style={toggleButtonStyle}>
-          {showLogin ? "Switch to Register" : "Switch to Log in"}
-        </button>
+        {userInfo && (
+          <div style={{ color: 'white', marginTop: '20px' }}>
+            <h2>User Information:</h2>
+            <p>ID: {userInfo.id}</p>
+            <p>Username: {userInfo.username}</p>
+            <p>Email: {userInfo.email}</p>
+          </div>
+        )}
+
+        {error && <p style={{ color: 'red', marginTop: '20px' }}>{error}</p>}
+
+        {token && <p style={{ color: 'green', marginTop: '20px' }}>Token: {token}</p>}
+
+        <button onClick={toggleForm}>Switch to {showLogin ? "Register" : "Log in"}</button>
       </div>
     </div>
   );
-};
-
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
-
-const mainStyle = {
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: '#240046',
-  width: '300px', // Adjust the width as needed
-  padding: '20px',
-  borderRadius: '12px',
-  boxShadow: '7px 7px 10px 3px #24004628',
-  marginTop: '20px', // Adjust the margin as needed for spacing from the navbar
-};
-
-const checkboxStyle = {
-  display: 'none',
-};
-
-const formContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '14px',
-  marginTop: '20px',
-};
-
-const labelStyle = {
-  margin: '5% 0 5%',
-  color: '#fff',
-  fontSize: '2rem',
-  justifyContent: 'center',
-  display: 'flex',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  transition: '.5s ease-in-out',
-};
-
-const inputStyle = {
-  width: '100%',
-  height: '40px',
-  background: '#e0dede',
-  padding: '10px',
-  border: 'none',
-  outline: 'none',
-  borderRadius: '4px',
-};
-
-const buttonStyle = {
-  width: '85%',
-  height: '40px',
-  margin: '12px auto 10%',
-  color: '#fff',
-  background: '#573b8a',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  transition: '.2s ease-in',
-};
-
-const toggleButtonStyle = {
-  background: 'transparent',
-  color: '#fff',
-  border: 'none',
-  cursor: 'pointer',
 };
 
 export default App;
