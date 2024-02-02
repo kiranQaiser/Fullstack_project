@@ -8,7 +8,9 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [userInfo, setUserInfo] = useState(null);
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
   const [token, setToken] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const toggleForm = () => {
     setShowLogin((prev) => !prev);
@@ -16,13 +18,16 @@ const App = () => {
     setPassword('');
     setEmail('');
     setError(null);
+    setSuccessMessage('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let apiUrl = 'http://localhost:8000/api/login/';
+      setLoading(true);
+
+      let apiUrl = `http://localhost:8000/api/${showLogin ? 'login' : 'register'}/`;
       let bodyData = {
         username: username,
         password: password,
@@ -30,11 +35,7 @@ const App = () => {
 
       if (!showLogin) {
         apiUrl = 'http://localhost:8000/api/register/';
-        bodyData = {
-          username: username,
-          password: password,
-          email: email,
-        };
+        bodyData.email = email;
       }
 
       const response = await fetch(apiUrl, {
@@ -48,6 +49,7 @@ const App = () => {
       if (response.ok) {
         const data = await response.json();
         setToken(data.token);
+        setSuccessMessage(showLogin ? 'Logged in successfully!' : 'Registered successfully!');
 
         const userInfoResponse = await fetch('http://localhost:8000/api/user-info/', {
           headers: {
@@ -66,121 +68,71 @@ const App = () => {
       }
     } catch (error) {
       setError('An error occurred during the authentication process');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#222',
-    alignItems: 'center',
-  };
-
-  const mainStyle = {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#222',
-    width: '300px', // Adjust the width as needed
-    padding: '20px',
-    borderRadius: '12px',
-    boxShadow: '7px 7px 10px 3px #24004628',
-    marginTop: '20px', // Adjust the margin as needed for spacing from the navbar
-  };
-
-  const checkboxStyle = {
-    display: 'none',
-    backgroundColor: '#222',
-  };
-
-  const formContainerStyle = {
-    // Add your styles for form container if needed
-  };
-
-  const formStyle = {
-    // Add your styles for form if needed
-  };
-
-  const labelStyle = {
-    // Add your styles for label if needed
-  };
-
-  const inputStyle = {
-    // Add your styles for input if needed
-  };
-
-  const toggleButtonStyle = {
-    background: 'transparent',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-  };
-
   return (
-    <div className="container login" style={containerStyle}>
-      <div className="main" style={mainStyle}>
-        <input type="checkbox" id="chk" aria-hidden="true" style={checkboxStyle} />
+    <div className="container">
+      <div className="main">
+        <input type="checkbox" id="chk" aria-hidden="true" />
 
-        <div className={showLogin ? "login" : "register"} style={formContainerStyle}>
-          <form className="form" style={formStyle} onSubmit={handleSubmit}>
-            <label htmlFor="chk" aria-hidden="true" style={labelStyle}>
-              {showLogin ? "Log in" : "Register"}
-            </label>
-            {showLogin ? (
-              <>
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  style={inputStyle}
-                />
-                <input
-                  className="input"
-                  type="password"
-                  name="pswd"
-                  placeholder="Password"
-                  required
-                  style={inputStyle}
-                />
-              </>
-            ) : (
-              <>
-                <input
-                  className="input"
-                  type="text"
-                  name="txt"
-                  placeholder="Username"
-                  required
-                  style={inputStyle}
-                />
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  style={inputStyle}
-                />
-                <input
-                  className="input"
-                  type="password"
-                  name="pswd"
-                  placeholder="Password"
-                  required
-                  style={inputStyle}
-                />
-              </>
+        <div className={showLogin ? 'login' : 'register'}>
+          <form className="form" onSubmit={handleSubmit}>
+            <label htmlFor="chk" aria-hidden="true">{showLogin ? 'Log in' : 'Register'}</label>
+
+            <input
+              className="input"
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              className="input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            {!showLogin && (
+              <input
+                className="input"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             )}
-            <button type="submit">Submit</button>
+
+            <button type="submit" disabled={loading}>{loading ? 'Loading...' : 'Submit'}</button>
           </form>
         </div>
 
-        <button onClick={toggleForm} style={toggleButtonStyle}>
-          {showLogin ? "Switch to Register" : "Switch to Log in"}
-        </button>
+        {successMessage && <p style={{ color: 'green', marginTop: '20px' }}>{successMessage}</p>}
+
+        {userInfo && (
+          <div style={{ color: 'white', marginTop: '20px' }}>
+            <h2>User Information:</h2>
+            <p>ID: {userInfo.id}</p>
+            <p>Username: {userInfo.username}</p>
+            <p>Email: {userInfo.email}</p>
+          </div>
+        )}
+
+        {error && <p style={{ color: 'red', marginTop: '20px' }}>{error}</p>}
+
+        {token && <p style={{ color: 'green', marginTop: '20px' }}>Token: {token}</p>}
+
+        <button onClick={toggleForm}>Switch to {showLogin ? 'Register' : 'Log in'}</button>
       </div>
     </div>
   );
