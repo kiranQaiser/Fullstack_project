@@ -17,7 +17,7 @@ import FAQ from './components/pages/FAQ';
 import AboutUs from './components/pages/AboutUs';
 import ContactUs from './components/pages/ContactUs';
 import OurOutlets from './components/pages/OurOutlets';
-
+import OrderSuccessPage from './components/pages/OrderSuccessPage';
 function App() {
   const [data, setData] = useState([]);
 
@@ -43,6 +43,7 @@ function App() {
           <Route path="/" element={<HomeContent data={data} />} />
           <Route path="/WomenPage" element={<WomenPage />} />
           <Route path="/MenPage" element={<MenPage />} />
+          <Route path="/OrderSuccessPage" element={<OrderSuccessPage />} />
           <Route path="/ReturnAndExchange" element={<ReturnAndExchange />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/RefundPolicy" element={<RefundPolicy />} />

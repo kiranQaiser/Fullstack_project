@@ -1,0 +1,82 @@
+/* Cart.css */
+.cart-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart-container {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  width: 60%; /* Adjust the width as needed */
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center; /* Center the text content */
+}
+
+.cart-summary {
+  margin-top: 20px;
+}
+
+.cart-summary h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.cart-summary p {
+  margin: 5px 0;
+}
+
+.delivery-form {
+  margin-top: 20px;
+}
+
+.delivery-form h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.delivery-form label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left; /* Align labels to the left */
+}
+
+.delivery-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.delivery-form button {
+  background-color: #aa9208;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  text-decoration: none;
+}
+
+.delivery-form button:hover {
+  background-color:#74640c;
+}
+
+.close-cart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}

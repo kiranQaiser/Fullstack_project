@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import './Page.css';
 
 const TermsOfService = () => {
     return (

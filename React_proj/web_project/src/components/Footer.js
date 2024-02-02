@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <h1>STAY CONNECTED</h1>
+      <h4>STAY CONNECTED</h4>
       <div className="footer-social2">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
@@ -33,7 +33,7 @@ const Footer = () => {
       <br></br>
       <div className="footer-content">
       <div className="footer-section">
-          <h2>LET US HELP YOU</h2>
+          <h3>LET US HELP YOU</h3>
           <ul className="footer-links">
             <li><a href="/shipping-policy">Shipping Policy</a></li>
             <li><a href="/ReturnAndExchange">Return and Exchange</a></li>
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
-          <h2>GET TO KNOW US</h2>
+          <h3>GET TO KNOW US</h3>
           <ul className="footer-links">
             <li><a href="/AboutUs">About Us</a></li>
             <li><a href="/ContactUs">Contact us</a></li>
@@ -55,7 +55,7 @@ const Footer = () => {
 
         <div className="footer-section">
         <div className="footer-section">
-          <h2>CUSTOMER CARE</h2>
+          <h3>CUSTOMER CARE</h3>
           <p>Timings: 3PM - 12AM (Mon - Sun)</p>
           <p>Call: +(92)301-9229998</p>
           <p>E-mail: care@sclothers.com</p>
@@ -64,7 +64,7 @@ const Footer = () => {
         
 
         <div className="footer-section">
-          <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
+          <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
           <div className="footer-subscribe">
             <input type="email" placeholder="Enter your email" />
             <button>Subscribe</button>
@@ -74,7 +74,7 @@ const Footer = () => {
      
       <div className="footer-bottom">
       <div className="footer-section">
-          <h2>Secure Payment Methods</h2>
+          <h3>Secure Payment Methods</h3>
           <div className="footer-payment-methods">
             <FaCcVisa className="payment-icon" />
             <FaCcMastercard className="payment-icon" />
