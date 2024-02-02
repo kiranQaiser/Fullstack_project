@@ -1,17 +1,120 @@
 import React, { useState } from 'react';
-import './Page.css';
+import './Login.css';
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [userInfo, setUserInfo] = useState(null);
+  const [error, setError] = useState(null);
+  const [token, setToken] = useState('');
 
   const toggleForm = () => {
     setShowLogin((prev) => !prev);
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    setError(null);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let apiUrl = 'http://localhost:8000/api/login/';
+      let bodyData = {
+        username: username,
+        password: password,
+      };
+
+      if (!showLogin) {
+        apiUrl = 'http://localhost:8000/api/register/';
+        bodyData = {
+          username: username,
+          password: password,
+          email: email,
+        };
+      }
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bodyData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setToken(data.token);
+
+        const userInfoResponse = await fetch('http://localhost:8000/api/user-info/', {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        });
+
+        if (userInfoResponse.ok) {
+          const userInfo = await userInfoResponse.json();
+          setUserInfo(userInfo);
+        } else {
+          setError('Failed to fetch user information');
+        }
+      } else {
+        setError('Invalid credentials or registration failed');
+      }
+    } catch (error) {
+      setError('An error occurred during the authentication process');
+    }
+  };
+
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#222',
+    alignItems: 'center',
+  };
+
+  const mainStyle = {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#222',
+    width: '300px', // Adjust the width as needed
+    padding: '20px',
+    borderRadius: '12px',
+    boxShadow: '7px 7px 10px 3px #24004628',
+    marginTop: '20px', // Adjust the margin as needed for spacing from the navbar
+  };
+
+  const checkboxStyle = {
+    display: 'none',
+    backgroundColor: '#222',
+  };
+
+  const formContainerStyle = {
+    // Add your styles for form container if needed
   };
 
   const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '14px',
-    padding: '24px',
+    // Add your styles for form if needed
+  };
+
+  const labelStyle = {
+    // Add your styles for label if needed
+  };
+
+  const inputStyle = {
+    // Add your styles for input if needed
+  };
+
+  const toggleButtonStyle = {
+    background: 'transparent',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
   };
 
   return (
@@ -20,21 +123,58 @@ const App = () => {
         <input type="checkbox" id="chk" aria-hidden="true" style={checkboxStyle} />
 
         <div className={showLogin ? "login" : "register"} style={formContainerStyle}>
-          <form className="form" style={formStyle}>
-            <label htmlFor="chk" aria-hidden="true" style={labelStyle}>{showLogin ? "Log in" : "Register"}</label>
+          <form className="form" style={formStyle} onSubmit={handleSubmit}>
+            <label htmlFor="chk" aria-hidden="true" style={labelStyle}>
+              {showLogin ? "Log in" : "Register"}
+            </label>
             {showLogin ? (
               <>
-                <input className="input" type="email" name="email" placeholder="Email" required style={inputStyle} />
-                <input className="input" type="password" name="pswd" placeholder="Password" required style={inputStyle} />
+                <input
+                  className="input"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  style={inputStyle}
+                />
+                <input
+                  className="input"
+                  type="password"
+                  name="pswd"
+                  placeholder="Password"
+                  required
+                  style={inputStyle}
+                />
               </>
             ) : (
               <>
-                <input className="input" type="text" name="txt" placeholder="Username" required style={inputStyle} />
-                <input className="input" type="email" name="email" placeholder="Email" required style={inputStyle} />
-                <input className="input" type="password" name="pswd" placeholder="Password" required style={inputStyle} />
+                <input
+                  className="input"
+                  type="text"
+                  name="txt"
+                  placeholder="Username"
+                  required
+                  style={inputStyle}
+                />
+                <input
+                  className="input"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  style={inputStyle}
+                />
+                <input
+                  className="input"
+                  type="password"
+                  name="pswd"
+                  placeholder="Password"
+                  required
+                  style={inputStyle}
+                />
               </>
             )}
-            <button >Submit</button>
+            <button type="submit">Submit</button>
           </form>
         </div>
 
@@ -46,81 +186,4 @@ const App = () => {
   );
 };
 
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor:'#222',
-  alignItems: 'center',
-};
-
-const mainStyle = {
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor:'#222',
-  width: '300px', // Adjust the width as needed
-  padding: '20px',
-  borderRadius: '12px',
-  boxShadow: '7px 7px 10px 3px #24004628',
-  marginTop: '20px', // Adjust the margin as needed for spacing from the navbar
-};
-
-const checkboxStyle = {
-  display: 'none',
-  backgroundColor:'#222',
-};
-
-const formContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '14px',
-  marginTop: '20px',
-};
-
-const labelStyle = {
-  margin: '5% 0 5%',
-  color: '#fff',
-  fontSize: '2rem',
-  justifyContent: 'center',
-  display: 'flex',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  transition: '.5s ease-in-out',
-};
-
-const inputStyle = {
-  width: '100%',
-  height: '40px',
-  background: '#e0dede',
-  padding: '10px',
-  border: 'none',
-  outline: 'none',
-  borderRadius: '4px',
-};
-
-const buttonStyle = {
-  width: '85%',
-  height: '40px',
-  margin: '12px auto 10%',
-  color: '#fff',
-  background: '#573b8a',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  transition: '.2s ease-in',
-};
-
-const toggleButtonStyle = {
-  background: 'transparent',
-  color: '#fff',
-  border: 'none',
-  cursor: 'pointer',
-  transition: 'background-color 0.3s ease', // Add transition for smoother color change
-};
-
-toggleButtonStyle[':hover'] = {
-  background: '#504508', // Change to your desired hover color
-};
 export default App;
