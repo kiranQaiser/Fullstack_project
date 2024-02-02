@@ -15,7 +15,7 @@
     width: 300px; /* Adjust the width as needed */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 7px 7px 10px 3px #24004628;
+    box-shadow: 7px 7px 10px 3px #00462928;
     margin-top: 20px; /* Adjust the margin as needed for spacing from the navbar */
   }
   
@@ -44,11 +44,11 @@
   }
   
   button {
-    width: 85%;
+    width: 35%;
     height: 40px;
     margin: 12px auto 10%;
     color: #fff;
-    background: #573b8a;
+    background: #c2a815;
     font-size: 1rem;
     font-weight: bold;
     border: none;
@@ -58,7 +58,7 @@
   }
   
   button:hover {
-    background: #472c67;
+    background: #928f96;
   }
   
   /* Add any additional styling as needed */
