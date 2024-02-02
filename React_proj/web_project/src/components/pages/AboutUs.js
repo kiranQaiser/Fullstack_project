@@ -11,12 +11,12 @@ const AboutUs = () => {
                 <h1 className="mb-4">About Us</h1>
 
                 <p>
-                    Welcome to [Your Brand Name], your go-to destination for high-quality and trendy clothing. We are passionate about providing our customers with fashionable and comfortable apparel that reflects their unique style.
+                    Welcome to M&K , your go-to destination for high-quality and trendy clothing. We are passionate about providing our customers with fashionable and comfortable apparel that reflects their unique style.
                 </p>
 
                 <h4>Our Mission</h4>
                 <p>
-                    At [Your Brand Name], our mission is to inspire confidence and empower individuals through fashion. We strive to create clothing that not only looks great but also makes you feel confident and expressive.
+                    At M&K, our mission is to inspire confidence and empower individuals through fashion. We strive to create clothing that not only looks great but also makes you feel confident and expressive.
                 </p>
 
                 <h4>Our Values</h4>

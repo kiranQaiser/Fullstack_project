@@ -15,7 +15,7 @@ const App = () => {
   };
 
   return (
-    <div className="container" style={containerStyle}>
+    <div className="container login" style={containerStyle}>
       <div className="main" style={mainStyle}>
         <input type="checkbox" id="chk" aria-hidden="true" style={checkboxStyle} />
 
@@ -34,7 +34,7 @@ const App = () => {
                 <input className="input" type="password" name="pswd" placeholder="Password" required style={inputStyle} />
               </>
             )}
-            <button style={buttonStyle}>Submit</button>
+            <button >Submit</button>
           </form>
         </div>
 
@@ -49,6 +49,7 @@ const App = () => {
 const containerStyle = {
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor:'#222',
   alignItems: 'center',
 };
 
@@ -56,7 +57,7 @@ const mainStyle = {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: '#240046',
+  backgroundColor:'#222',
   width: '300px', // Adjust the width as needed
   padding: '20px',
   borderRadius: '12px',
@@ -66,6 +67,7 @@ const mainStyle = {
 
 const checkboxStyle = {
   display: 'none',
+  backgroundColor:'#222',
 };
 
 const formContainerStyle = {
@@ -115,6 +117,10 @@ const toggleButtonStyle = {
   color: '#fff',
   border: 'none',
   cursor: 'pointer',
+  transition: 'background-color 0.3s ease', // Add transition for smoother color change
 };
 
+toggleButtonStyle[':hover'] = {
+  background: '#504508', // Change to your desired hover color
+};
 export default App;

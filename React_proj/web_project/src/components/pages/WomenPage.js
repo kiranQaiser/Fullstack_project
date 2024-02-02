@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Page.css';
 import Navbar from './Navbar';
+import { useCart } from './CartContext';
+import './Page.css';
+import ProductCard from './ProductCard';
 
 const WomenPage = () => {
+    const { addToCart, cart } = useCart();
     const [womenProducts, setWomenProducts] = useState([]);
 
     useEffect(() => {
@@ -26,33 +30,38 @@ const WomenPage = () => {
     return (
         <div className="women-page">
             <Navbar />
-            <div className="women-banner">
-                <p>hi</p>
-            </div>
-            <div className="women-products">
-                {womenProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
-            </div>
-        </div>
-    );
-};
-
-const ProductCard = ({ product }) => {
-    const testImageURL = 'https://www.sclothers.com/cdn/shop/products/3_ba725d3b-3ff3-4e8e-87a5-259dae939f6d.jpg?v=1680377589&width=1800';
-
-    return (
-        <div className="product-card">
-            <img src={testImageURL} alt={product.name} />
-            <img src={`http://localhost:8000${product.image}`} alt={product.name} />
-
-            <div className="product-details">
-                <h2>{product.name}</h2>
-                <p>{product.description}</p>
-                <p>Price: ${product.price}</p>
-                {/* Add buttons or functionality for adding to cart */}
-                <button>Add to Cart</button>
-            </div>
+            {/* Additional ProductCards */}
+            <ProductCard
+                product={{
+                    id: 4,
+                    name: "Graphic Tee Peach",
+                    description: "Round neck tee shirt in lycra jersey, featuring short sleeves and print in front from 'ONE'",
+                    price: 1495,
+                    image: "https://beoneshopone.com/cdn/shop/files/WTT0219-PCH.jpg?v=1696573903",
+                }}
+                addToCart={addToCart}
+            />
+            <hr className="product-line" />
+            <ProductCard
+                product={{
+                    id: 5,
+                    name: "Graphic Tee Pink",
+                    description: "Round neck tee shirt in lycra jersey, featuring short sleeves and print in front from 'ONE' ",
+                    price: 1395,
+                    image: "https://beoneshopone.com/cdn/shop/files/WTT0217-PNK4_954c2f2e-a2e6-4bad-9623-8bb7702c7ed8.jpg?v=1695206936",
+                }}
+                addToCart={addToCart}
+            />
+            <hr className="product-line" />
+            <ProductCard
+                product={{
+                    id: 5,
+                    name: "Statement Tee Blue",
+                    description: "Round neck tee shirt in jersey fabrication, featuring print in front from 'ONE' ",
+                    price: 1195,
+                    image: "https://beoneshopone.com/cdn/shop/products/WTT0206-BLU_1.jpg?v=1680683586"                }}
+                addToCart={addToCart}
+            />
         </div>
     );
 };

@@ -43,8 +43,6 @@ body {
 }
 
 
-/* src/styles/App.css */
-
 .footer {
   background-color: #333;
   color: #fff;
@@ -56,6 +54,7 @@ body {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  font-size:small;
 }
 
 .footer-section {
@@ -154,7 +153,7 @@ body {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #7a6a10;
   padding: 5px;
   font-size: 30px;
 }
@@ -169,7 +168,104 @@ body {
   color: #333;
 }
 
-.header {
+header {
   color: white ;
   }
 
+/* Footer.css */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-top {
+  margin-bottom: 20px;
+}
+
+.footer h4 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer-subscribe {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-subscribe input {
+  padding: 8px;
+  margin-bottom: 8px;
+  width: 200px;
+}
+
+.footer-subscribe button {
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-secure-payment {
+  flex: 1;
+  max-width: 200px;
+  text-align: left;
+}
+
+.payment-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.footer-copyright {
+  flex: 1;
+  max-width: 300px;
+  text-align: right;
+}
+
+.footer-copyright p {
+  font-size: 14px;
+  margin: 5px 0;
+}

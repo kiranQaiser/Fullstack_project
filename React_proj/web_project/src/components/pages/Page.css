@@ -11,29 +11,42 @@ body {
 .women-banner {
   /* Add styles for your banner */
   margin-bottom: 20px;
+  background-color: purple;
 }
 
 .women-products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  align-items: center;
+  justify-content: center; /* Add this line to center the items horizontally */
 }
 
 .product-card {
-  border: 1px solid #ddd;
+  
   padding: 10px;
   text-align: center;
-  background-color: #444; /* Set your desired dark card background color */
+  background-color: #1f1d1d; /* Set your desired dark card background color */
   color: #fff; /* Set your desired light text color */
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  max-Width: 800px;
+  max-Height: 800px;
+
 }
 
 .product-card img {
-  max-width: 100%;
   height: auto;
+  max-Width: 500px;
+  max-Height: 500px;
+  align-items: center;
+  text-align: center;
 }
 
 .product-details {
   margin-top: 10px;
+
 }
 
 /* Navbar.css */
@@ -43,7 +56,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #222; /* Set your desired dark background color */
+  background-color: #0f0f0f; /* Set your desired dark background color */
   position: fixed;
   top: 0;
   width: 100%;
@@ -89,7 +102,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #333; /* Set your desired text color */
+  color: #0e0d0d; /* Set your desired text color */
   margin: 0 20px; /* Adjust the margin as needed */
   font-weight: bold; /* Adjust the font weight as needed */
 }
@@ -106,6 +119,159 @@ body {
 .page-content{
   margin-top: 100px;
   margin-bottom: 50px;
+  background-color: #1f1d1d;
+  padding: 50px;
+}
+.order-page{
+  margin-top: 200px;
+  margin-bottom: 50px;
+  text-align: center;
+  color:white;
+}
+ button{
+
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  background-color: #aa9208; /* Yellow background color */
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s ease-in;}
+
+ button:hover {
+  background-color:#504508 ;
+  color: #fff;
 }
 
+.login{
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
 
+.image-label{
+  color:black ;
+  font-weight: 600;
+}
+.image-wrapper{
+  background-color: #aa9208;
+}
+
+/* App.css or Page.css - Add these styles for the Navbar */
+.navbar {
+  color: #aa9208;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #0c0c0c; /* Set a darker background color */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  text-decoration: none;
+  color: #aa9208; /* Set your desired light text color */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color:#c2a815 ; /* Set your desired light text color */
+  margin: 0 20px; /* Adjust the margin as needed */
+   /* Adjust the font weight as needed */
+}
+
+.clothing-shop-link {
+  font-size: 40px; /* Adjust the font size as needed */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.search-cart a {
+  margin-left: 20px; /* Adjust the margin as needed */
+  text-decoration: none;
+  color: #ceb31c; /* Set your desired light text color */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color:#ceb31c; /* Set your desired light text color */
+  margin: 0 20px; /* Adjust the margin as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+.clothing-shop-link {
+  font-size: 40px; /* Adjust the font size as needed */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.home-content{
+  margin-top: 100px;
+  margin-bottom: 50px;
+  align-items: center;
+  text-align: center;
+  background-color: #c2a815;
+}
+.main-content{
+  margin-bottom: 100px;
+}
+.women-page{
+  margin-top: 100px;
+  margin-bottom: 50px;
+  align-items: center;
+  text-align: center;
+  background-color: #c2a815;
+}
+/* src/components/pages/WomenPage.css */
+.women-page {
+  padding: 20px;
+}
+
+.women-banner {
+  margin-bottom: 20px;
+  background-color: purple;
+}
+
+.women-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  align-items: center;
+  justify-content: center; /* Add this line to center the items horizontally */
+}
+
+.product-card {
+  padding: 10px;
+  text-align: center;
+  background-color: #1f1d1d;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 800px;
+  max-height: 800px;
+  margin: auto; /* Add this line to center the card horizontally */
+}
+
+.product-card img {
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
+  align-items: center;
+  text-align: center;
+}
+
+.product-details {
+  margin-top: 10px;
+}
+.clothing-shop-link{
+  font-size:60px ;
+}
